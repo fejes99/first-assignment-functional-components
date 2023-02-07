@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import "./Navbar.css";
-import NavbarItem from "../UI/NavbarItem/NavbarItem";
+import React, { Component } from 'react';
+import './Navbar.css';
+import NavbarItem from '../UI/NavbarItem/NavbarItem';
 
 const navigationItems = {
   assignment1: {
-    name: "Users",
-    link: "/users",
+    name: 'Users',
+    link: '/users',
   },
   assignment2: {
-    name: "Calculator",
-    link: "/calculator",
+    name: 'Calculator',
+    link: '/calculator',
   },
 };
 
@@ -25,11 +25,9 @@ class Navbar extends Component {
       );
     });
 
-    console.log(navbarItems);
-
     return (
-      <div className="navbar">
-        <div className="navbar-nav">{navbarItems}</div>
+      <div className='navbar'>
+        <div className='navbar-nav'>{navbarItems}</div>
       </div>
     );
   }
