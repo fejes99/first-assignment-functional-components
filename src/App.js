@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import Calculator from './components/pages/Calculator/Calculator';
+import Calculator from './components/pages/calculator/Calculator';
 import UsersTable from './components/pages/UsersTable/UsersTable';
 
 class App extends Component {
