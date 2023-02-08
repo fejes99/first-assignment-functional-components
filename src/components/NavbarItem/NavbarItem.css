@@ -13,3 +13,11 @@
   box-sizing: border-box;
   display: block;
 }
+
+.active {
+  font-weight: bold;
+}
+
+.inactive {
+  font-weight: normal;
+}

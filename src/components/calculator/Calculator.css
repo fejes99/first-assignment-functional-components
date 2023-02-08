@@ -9,11 +9,11 @@
 .form-row {
   display: flex;
   justify-content: flex-end;
-  padding: 0.5em;
+  padding: 15px;
 }
 
 .form-row > label {
-  padding: 0.5em 1em 0.5em 0;
+  padding: 5px 10px 5px 0;
   flex: 1;
 }
 
@@ -23,7 +23,7 @@
 
 .form-row > input,
 .form-row > button {
-  padding: 0.5em;
+  padding: 10px;
 }
 
 .form-row > button {

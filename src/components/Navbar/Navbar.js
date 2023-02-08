@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
+import NavbarItem from '../NavbarItem/NavbarItem';
 import './Navbar.css';
-import NavbarItem from '../UI/NavbarItem/NavbarItem';
 
-const navigationItems = {
-  assignment1: {
+const navigationItems = [
+  {
     name: 'Users',
     link: '/users',
   },
-  assignment2: {
+  {
     name: 'Calculator',
     link: '/calculator',
   },
-};
+];
 
 class Navbar extends Component {
   render() {
-    let navbarItems = Object.values(navigationItems).map((assignment) => {
+    let navbarItems = navigationItems.map((assignment) => {
       return (
         <NavbarItem
           key={assignment.name}

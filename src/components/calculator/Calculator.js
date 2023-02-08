@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Calculator.css';
-import Input from '../../UI/Input/Input';
+import Input from '../Input/Input';
 
 class Calculator extends Component {
   state = {
@@ -17,25 +17,26 @@ class Calculator extends Component {
 
   inputChangeHandler = (event, number) => {
     if (number === 'firstNumber') {
-      const updatedNumber = {
-        ...this.state.firstNumber,
-      };
-      updatedNumber.value = event.target.value;
       this.setState({
-        firstNumber: updatedNumber,
+        firstNumber: {
+          ...this.state.firstNumber,
+          value: event.target.value,
+        },
+        sum: 0,
       });
     } else if (number === 'secondNumber') {
-      const updatedNumber = {
-        ...this.state.secondNumber,
-      };
-      updatedNumber.value = event.target.value;
       this.setState({
-        secondNumber: updatedNumber,
+        secondNumber: {
+          ...this.state.secondNumber,
+          value: event.target.value,
+        },
+        sum: 0,
       });
     }
   };
 
   validateInput = () => {
+    let valid = true;
     if (
       isNaN(this.state.firstNumber.value) ||
       this.state.firstNumber.value === ''
@@ -45,7 +46,9 @@ class Calculator extends Component {
           ...this.state.firstNumber,
           error: 'Please enter a valid number',
         },
+        sum: 0,
       });
+      valid = false;
     } else {
       this.setState({
         firstNumber: {
@@ -64,7 +67,9 @@ class Calculator extends Component {
           ...this.state.secondNumber,
           error: 'Please enter a valid number',
         },
+        sum: 0,
       });
+      valid = false;
     } else {
       this.setState({
         secondNumber: {
@@ -73,18 +78,20 @@ class Calculator extends Component {
         },
       });
     }
-    return;
+    return valid;
   };
 
   sumNumbers = () => {
-    this.validateInput();
-    const firstNumberValue = parseFloat(this.state.firstNumber.value);
-    const secondNumberValue = parseFloat(this.state.secondNumber.value);
+    if (this.validateInput()) {
+      const firstNumberValue = parseFloat(this.state.firstNumber.value);
+      const secondNumberValue = parseFloat(this.state.secondNumber.value);
 
-    const sum = firstNumberValue + secondNumberValue;
-    this.setState({
-      sum: sum,
-    });
+      const sum = firstNumberValue + secondNumberValue;
+      this.setState({
+        sum: sum,
+      });
+    }
+    return;
   };
 
   render() {
@@ -118,7 +125,7 @@ class Calculator extends Component {
             </button>
           </li>
         </div>
-        {isNaN(this.state.sum) ? (
+        {isNaN(this.state.sum) || this.state.sum === 0 ? (
           <div>Insert numbers</div>
         ) : (
           <div>Sum: {this.state.sum}</div>

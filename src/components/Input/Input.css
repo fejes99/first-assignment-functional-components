@@ -1,0 +1,21 @@
+.InputContainer {
+  padding: 5px;
+}
+
+input {
+  padding: 7px;
+}
+
+.Invalid {
+  border: none;
+  background-color: salmon;
+  font-weight: bold;
+  color: white;
+}
+
+.ErrorMessage {
+  position: absolute;
+  top: auto;
+  left: 925px;
+  color: red;
+}
