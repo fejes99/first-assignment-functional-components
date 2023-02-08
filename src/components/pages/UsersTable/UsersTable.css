@@ -1,0 +1,20 @@
+table {
+  margin: auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.even {
+  background-color: #fff;
+}
+
+.odd {
+  background-color: #f0f0f0;
+}

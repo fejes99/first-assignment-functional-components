@@ -1,0 +1,45 @@
+.form-wrapper {
+  margin: auto;
+  width: fit-content;
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+}
+
+.form-row > label {
+  padding: 0.5em 1em 0.5em 0;
+  flex: 1;
+}
+
+.form-row > input {
+  flex: 2;
+}
+
+.form-row > input,
+.form-row > button {
+  padding: 0.5em;
+}
+
+.form-row > button {
+  background: gray;
+  color: white;
+  border: 0;
+}
+
+.button {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

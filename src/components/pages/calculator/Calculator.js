@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Calculator.css';
 import Input from '../../UI/Input/Input';
 
 class Calculator extends Component {
@@ -90,20 +91,33 @@ class Calculator extends Component {
     return (
       <div>
         <h1>Calculator</h1>
-        <Input
-          label='First number: '
-          value={this.state.firstNumber.value}
-          error={this.state.firstNumber.error}
-          onChange={(event) => this.inputChangeHandler(event, 'firstNumber')}
-        />
-        <Input
-          label='Second number: '
-          value={this.state.secondNumber.value}
-          error={this.state.secondNumber.error}
-          onChange={(event) => this.inputChangeHandler(event, 'secondNumber')}
-        />
-        <button onClick={this.sumNumbers}>Sum</button>
-        <br />
+        <div className='form-wrapper'>
+          <li className='form-row'>
+            <Input
+              label='First number: '
+              value={this.state.firstNumber.value}
+              error={this.state.firstNumber.error}
+              onChange={(event) =>
+                this.inputChangeHandler(event, 'firstNumber')
+              }
+            />
+          </li>
+          <li className='form-row'>
+            <Input
+              label='Second number: '
+              value={this.state.secondNumber.value}
+              error={this.state.secondNumber.error}
+              onChange={(event) =>
+                this.inputChangeHandler(event, 'secondNumber')
+              }
+            />
+          </li>
+          <li>
+            <button className='button' onClick={this.sumNumbers}>
+              Sum
+            </button>
+          </li>
+        </div>
         {isNaN(this.state.sum) ? (
           <div>Insert numbers</div>
         ) : (
