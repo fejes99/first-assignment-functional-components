@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Calculator from './components/calculator/Calculator';
 import UsersTable from './components/UsersTable/UsersTable';
+import Welcome from './components/Welcome/Welcome';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Switch>
           <Route path='/calculator' component={Calculator} />
           <Route path='/users' component={UsersTable} />
+          <Route path='/' component={Welcome} />
         </Switch>
       </div>
     );
