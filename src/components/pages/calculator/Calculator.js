@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from '../../UI/NavbarItem/Input/Input';
+import Input from '../../UI/Input/Input';
 
 class Calculator extends Component {
   state = {
