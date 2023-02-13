@@ -1,5 +1,6 @@
 .InputContainer {
   padding: 5px;
+  position: relative;
 }
 
 input {
@@ -16,6 +17,6 @@ input {
 .ErrorMessage {
   position: absolute;
   top: auto;
-  left: 925px;
+  right: 0;
   color: red;
 }

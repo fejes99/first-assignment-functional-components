@@ -19,37 +19,33 @@ class UsersTable extends Component {
   }
 
   render() {
-    let table = (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Website</th>
-            <th>City</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.website}</td>
-              <td>{user.address.city}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-
-    if (this.state.loading) {
-      table = <BeatLoader color='#353a40' />;
-    }
-
     return (
       <div>
         <h1>Users table</h1>
-        {table}
+        {this.state.loading ? (
+          <BeatLoader color='#353a40' />
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Website</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.website}</td>
+                  <td>{user.address.city}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     );
   }

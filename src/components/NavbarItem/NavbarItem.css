@@ -7,17 +7,14 @@
 }
 
 .navbar-item a {
-  color: white;
+  color: #a0a0a0;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
   display: block;
 }
 
-.active {
+.navbar-item a.active {
+  color: white;
   font-weight: bold;
-}
-
-.inactive {
-  font-weight: normal;
 }

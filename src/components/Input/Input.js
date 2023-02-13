@@ -9,7 +9,6 @@ class Input extends Component {
         <input
           className={this.props.error !== '' ? 'Invalid' : null}
           type='text'
-          placeholder={this.props.placeholder}
           value={this.props.value}
           onChange={this.props.onChange}
         />

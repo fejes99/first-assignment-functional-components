@@ -91,7 +91,6 @@ class Calculator extends Component {
         sum: sum,
       });
     }
-    return;
   };
 
   render() {
@@ -99,7 +98,7 @@ class Calculator extends Component {
       <div>
         <h1>Calculator</h1>
         <div className='form-wrapper'>
-          <li className='form-row'>
+          <div className='form-row'>
             <Input
               label='First number: '
               value={this.state.firstNumber.value}
@@ -108,8 +107,8 @@ class Calculator extends Component {
                 this.inputChangeHandler(event, 'firstNumber')
               }
             />
-          </li>
-          <li className='form-row'>
+          </div>
+          <div className='form-row'>
             <Input
               label='Second number: '
               value={this.state.secondNumber.value}
@@ -118,12 +117,12 @@ class Calculator extends Component {
                 this.inputChangeHandler(event, 'secondNumber')
               }
             />
-          </li>
-          <li>
+          </div>
+          <div>
             <button className='button' onClick={this.sumNumbers}>
               Sum
             </button>
-          </li>
+          </div>
         </div>
         {isNaN(this.state.sum) || this.state.sum === 0 ? (
           <div>Insert numbers</div>
