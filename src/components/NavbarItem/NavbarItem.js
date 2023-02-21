@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './NavbarItem.css';
 
 class NavbarItem extends Component {
-  render(props) {
+  render() {
     return (
       <div className='navbar-item'>
-        <NavLink to={this.props.link}>{this.props.name} </NavLink>
+        <NavLink to={this.props.link}>{this.props.name}</NavLink>
       </div>
     );
   }

@@ -37,47 +37,27 @@ class Calculator extends Component {
 
   validateInput = () => {
     let valid = true;
-    if (
-      isNaN(this.state.firstNumber.value) ||
-      this.state.firstNumber.value === ''
-    ) {
-      this.setState({
-        firstNumber: {
-          ...this.state.firstNumber,
-          error: 'Please enter a valid number',
-        },
-        sum: 0,
-      });
+
+    const updatedFirstNumber =
+      isNaN(this.state.firstNumber.value) || this.state.firstNumber.value === ''
+        ? { ...this.state.firstNumber, error: 'Please enter a valid number' }
+        : { ...this.state.firstNumber, error: '' };
+
+    const updatedSecondNumber =
+      isNaN(this.state.secondNumber.value) || this.state.secondNumber.value === ''
+        ? { ...this.state.secondNumber, error: 'Please enter a valid number' }
+        : { ...this.state.secondNumber, error: '' };
+
+    this.setState({
+      firstNumber: updatedFirstNumber,
+      secondNumber: updatedSecondNumber,
+      sum: updatedFirstNumber.value + updatedSecondNumber.value || 0,
+    });
+
+    if (updatedFirstNumber.error || updatedSecondNumber.error) {
       valid = false;
-    } else {
-      this.setState({
-        firstNumber: {
-          ...this.state.firstNumber,
-          error: '',
-        },
-      });
     }
 
-    if (
-      isNaN(this.state.secondNumber.value) ||
-      this.state.secondNumber.value === ''
-    ) {
-      this.setState({
-        secondNumber: {
-          ...this.state.secondNumber,
-          error: 'Please enter a valid number',
-        },
-        sum: 0,
-      });
-      valid = false;
-    } else {
-      this.setState({
-        secondNumber: {
-          ...this.state.secondNumber,
-          error: '',
-        },
-      });
-    }
     return valid;
   };
 
@@ -103,9 +83,7 @@ class Calculator extends Component {
               label='First number: '
               value={this.state.firstNumber.value}
               error={this.state.firstNumber.error}
-              onChange={(event) =>
-                this.inputChangeHandler(event, 'firstNumber')
-              }
+              onChange={(event) => this.inputChangeHandler(event, 'firstNumber')}
             />
           </div>
           <div className='form-row'>
@@ -113,9 +91,7 @@ class Calculator extends Component {
               label='Second number: '
               value={this.state.secondNumber.value}
               error={this.state.secondNumber.error}
-              onChange={(event) =>
-                this.inputChangeHandler(event, 'secondNumber')
-              }
+              onChange={(event) => this.inputChangeHandler(event, 'secondNumber')}
             />
           </div>
           <div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './UsersTable.css';
 import { BeatLoader } from 'react-spinners';
+import './UsersTable.css';
 
 class UsersTable extends Component {
   state = {
@@ -11,41 +11,50 @@ class UsersTable extends Component {
 
   componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-      this.setState({
-        loading: false,
-        users: res.data,
-      });
+      const fetchedUsers = [];
+      for (let key in res.data) {
+        fetchedUsers.push({
+          ...res.data[key],
+          id: key,
+        });
+        this.setState({
+          users: fetchedUsers,
+          loading: false,
+        });
+      }
     });
   }
 
   render() {
+    const { users, loading } = this.state;
+    const usersTable = loading ? (
+      <BeatLoader color='#353a40' />
+    ) : (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id} className={parseFloat(user.id) % 2 === 0 ? 'even' : 'odd'}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.website}</td>
+              <td>{user.address.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
     return (
       <div>
         <h1>Users table</h1>
-        {this.state.loading ? (
-          <BeatLoader color='#353a40' />
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Website</th>
-                <th>City</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.website}</td>
-                  <td>{user.address.city}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+        {usersTable}
       </div>
     );
   }
