@@ -1,63 +1,61 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BeatLoader } from 'react-spinners';
 import './UsersTable.css';
 
-class UsersTable extends Component {
-  state = {
-    users: [],
-    loading: true,
-  };
+const UsersTable = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-      const fetchedUsers = [];
-      for (let key in res.data) {
-        fetchedUsers.push({
-          ...res.data[key],
-          id: key,
-        });
-        this.setState({
-          users: fetchedUsers,
-          loading: false,
-        });
-      }
-    });
-  }
+  useEffect(() => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then((res) => {
+        const fetchedUsers = [];
+        for (let key in res.data) {
+          fetchedUsers.push({
+            ...res.data[key],
+            id: key,
+          });
+        }
+        setUsers(fetchedUsers);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+      });
+  }, []);
 
-  render() {
-    const { users, loading } = this.state;
-    const usersTable = loading ? (
-      <BeatLoader color='#353a40' />
-    ) : (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Website</th>
-            <th>City</th>
+  const usersTable = loading ? (
+    <BeatLoader color='#353a40' />
+  ) : (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Website</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr key={user.id} className={parseFloat(user.id) % 2 === 0 ? 'even' : 'odd'}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.website}</td>
+            <td>{user.address.city}</td>
           </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id} className={parseFloat(user.id) % 2 === 0 ? 'even' : 'odd'}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.website}</td>
-              <td>{user.address.city}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-    return (
-      <div>
-        <h1>Users table</h1>
-        {usersTable}
-      </div>
-    );
-  }
-}
+        ))}
+      </tbody>
+    </table>
+  );
+  return (
+    <div>
+      <h1>Users table</h1>
+      {usersTable}
+    </div>
+  );
+};
 
 export default UsersTable;

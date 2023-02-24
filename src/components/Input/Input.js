@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Input.css';
 
-class Input extends Component {
-  render() {
-    return (
-      <div className='InputContainer'>
-        <label>{this.props.label}</label>
-        <input
-          className={this.props.error !== '' ? 'Invalid' : null}
-          type='text'
-          value={this.props.value}
-          onChange={this.props.onChange}
-        />
-        {this.props.error !== '' && (
-          <div className='ErrorMessage'>{this.props.error}</div>
-        )}
-      </div>
-    );
-  }
-}
+const Input = ({ label, value, error, onChange }) => {
+  return (
+    <div className='InputContainer'>
+      <label>{label}</label>
+      <input
+        className={error !== '' ? 'Invalid' : null}
+        type='text'
+        value={value}
+        onChange={onChange}
+      />
+      {error !== '' && <div className='ErrorMessage'>{error}</div>}
+    </div>
+  );
+};
 
 export default Input;
