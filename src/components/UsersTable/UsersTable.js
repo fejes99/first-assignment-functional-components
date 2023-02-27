@@ -26,9 +26,9 @@ const UsersTable = () => {
       });
   }, []);
 
-  const usersTable = loading ? (
-    <BeatLoader color='#353a40' />
-  ) : (
+  if (loading) return <BeatLoader color='#353a40' />;
+
+  const usersTable = (
     <table>
       <thead>
         <tr>
@@ -50,6 +50,7 @@ const UsersTable = () => {
       </tbody>
     </table>
   );
+
   return (
     <div>
       <h1>Users table</h1>

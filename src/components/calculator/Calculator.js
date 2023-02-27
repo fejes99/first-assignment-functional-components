@@ -28,10 +28,8 @@ const Calculator = () => {
         ? { ...secondNumber, error: 'Please enter a valid number' }
         : { ...secondNumber, error: '' };
 
-    const updatedSum = updatedFirstNumber.value + updatedSecondNumber.value || 0;
     setFirstNumber(updatedFirstNumber);
     setSecondNumber(updatedSecondNumber);
-    setSum(updatedSum);
 
     if (updatedFirstNumber.error || updatedSecondNumber.error) {
       valid = false;
