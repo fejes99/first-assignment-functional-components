@@ -40,7 +40,7 @@ const UsersTable = () => {
       </thead>
       <tbody>
         {users.map((user) => (
-          <tr key={user.id} className={parseFloat(user.id) % 2 === 0 ? 'even' : 'odd'}>
+          <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.website}</td>
