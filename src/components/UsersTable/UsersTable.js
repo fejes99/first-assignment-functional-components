@@ -11,14 +11,7 @@ const UsersTable = () => {
     axios
       .get('https://jsonplaceholder.typicode.com/users')
       .then((res) => {
-        const fetchedUsers = [];
-        for (let key in res.data) {
-          fetchedUsers.push({
-            ...res.data[key],
-            id: key,
-          });
-        }
-        setUsers(fetchedUsers);
+        setUsers(res.data);
         setLoading(false);
       })
       .catch((error) => {
